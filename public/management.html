@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>分类管理</title>
+    <!-- 引入reset.css -->
+    <link rel="stylesheet" href="style/reset.css">
+    <!-- 引入elementUI.css -->
+    <link rel="stylesheet" href="style/elementUI.css">
+    <!-- 引入index.css -->
+    <link rel="stylesheet" href="style/index.css">
+</head>
+
+<body>
+    <div id="app">
+
+        <el-main>
+            <el-card class="box-card">
+                <div slot="header" class="clearfix">
+                    <span>分类管理</span>
+                </div>
+                <div class="text item">
+
+                    <template>
+                        <el-table :data="tableData" style="width: 100%">
+                            <el-table-column label="分类名称" width="">
+                                <template slot-scope="scope">
+
+                                    <span>{{ scope.row.name }}</span>
+                                </template>
+                            </el-table-column>
+                         
+                            <el-table-column label="管理">
+                                <template slot-scope="scope">
+                                    <el-button size="mini" @click="handleEdit(scope.$index, scope.row)" type="success"
+                                        plain>编辑</el-button>
+                                    <el-button size="mini" type="danger" plain @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                                </template>
+                            </el-table-column>
+                        </el-table>
+                    </template>
+
+                </div>
+            </el-card>
+
+        </el-main>
+
+    </div>
+    <!-- 引入jquery.min.js -->
+    <script src="./js/jquery.min.js"></script>
+    <!-- 引入vue.min.js -->
+    <script src="./js/vue.min.js"></script>
+    <!-- 引入elementUI.js -->
+    <script src="./js/elementUI.js"></script>
+    <script>
+        /* 创建vue实例 */
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    tableData: [{
+                        name: '日用品',
+                      
+                    
+                    }, {
+                        name: '舒肤佳',
+                      
+                       
+                    }, {
+                        name: '舒肤佳A',
+                       
+                       
+                    }, {
+                        name: '舒肤佳B',
+                       
+                        
+                    }]
+                }
+
+            }
+
+
+        });
+    </script>
+</body>
+
+</html>

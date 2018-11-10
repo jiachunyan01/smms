@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页</title>
+    <!-- 引入reset.css -->
+    <link rel="stylesheet" href="style/reset.css">
+    <!-- 引入elementUI.css -->
+    <link rel="stylesheet" href="style/elementUI.css">
+    <!-- 引入index.css -->
+    <link rel="stylesheet" href="style/index.css">
+</head>
+
+<body>
+    <div id="app">
+        <el-container>
+            <el-aside width="230px">
+                <div id="box">
+                    <h1>华联超市管理系统</h1>
+                    <p>你好，admin</p>
+                    <p><a href="">管理首页</a> | <a href="">退出登录</a></p>
+
+                </div>
+                <el-menu  :unique-opened="true" class="el-menu-vertical-demo">
+                    <el-submenu index="1">
+                        <template slot="title">
+
+                            <span>分类管理</span>
+                        </template>
+                        <el-menu-item-group>
+                            <el-menu-item index="1-1"><a href="management.html" target="mainContent">分类管理</a></el-menu-item>
+                            <el-menu-item index="1-2"><a href="addClass.html" target="mainContent">添加账号</a></el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>
+                    <el-submenu index="2">
+                        <template slot="title">
+
+                            <span>商品管理</span>
+                        </template>
+                        <el-menu-item-group>
+        
+                            <el-menu-item index="2-1"><a href="goodsList.html" target="mainContent">商品管理</a></el-menu-item>
+                            <el-menu-item index="2-2"><a href="goodsAdd.html" target="mainContent">添加商品</a></el-menu-item>
+
+                        </el-menu-item-group>
+                    </el-submenu>
+                    <el-submenu index="3">
+                        <template slot="title">
+
+                            <span>进货管理</span>
+                        </template>
+                        <el-menu-item-group>
+                            <el-menu-item index="3-1"><a href="stocks .html" target="mainContent">库存管理</a></el-menu-item>
+                            <el-menu-item index="3-2"><a href="">添加库存</a></el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>
+
+                    <el-submenu index="4">
+                        <template slot="title">
+
+                            <span>出货管理</span>
+                        </template>
+                        <el-menu-item-group>
+                            <el-menu-item index="4-1"><a href="">销售列表</a></el-menu-item>
+                            <el-menu-item index="4-2"><a href="">商品出库</a></el-menu-item>
+                            <el-menu-item index="4-3"><a href="goodsReturn.html"  target="mainContent">商品退货</a></el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>
+                    <el-submenu index="5">
+                        <template slot="title">
+
+                            <span>统计管理</span>
+                        </template>
+                        <el-menu-item-group>
+                            <el-menu-item index="5-1"><a href="">销售统计</a></el-menu-item>
+                            <el-menu-item index="5-2"><a href="">进货统计</a></el-menu-item>
+
+                        </el-menu-item-group>
+                    </el-submenu>
+                    <el-submenu index="6">
+                        <template slot="title">
+
+                            <span>账号管理</span>
+                        </template>
+                        <el-menu-item-group>
+                            <el-menu-item index="6-1"><a href="userList.html" target="mainContent">账号管理</a></el-menu-item>
+                            <el-menu-item index="6-2"><a href="userAdd.html"  target="mainContent">添加账号</a></el-menu-item>
+                            <el-menu-item index="6-3"><a href="changePs.html" target="mainContent">修改密码</a></el-menu-item>
+
+                        </el-menu-item-group>
+                    </el-submenu>
+                   <el-submenu index="7">
+                        <template slot="title">
+
+                            <span>会员管理</span>
+                        </template>
+                        <el-menu-item-group>
+                            <el-menu-item index="7-2"><a href="">添加账号</a></el-menu-item>
+
+                        </el-menu-item-group>
+                    </el-submenu> 
+                    <el-submenu index="8">
+                        <template slot="title">
+
+                            <span>系统管理</span>
+                        </template>
+                        <el-menu-item-group>
+                            <el-menu-item index="8-1"><a href="">系统管理</a></el-menu-item>
+                         <el-menu-item index="8-2"><a href="">添加管理组</a></el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>
+                </el-menu>
+            </el-aside>
+            <el-container>
+                <el-header height="100">
+                    <h2>欢迎你 admin</h2>
+                    <p>查看详细的系统信息。</p>
+                </el-header>
+              <!-- main -->
+              <iframe src="main.html" name="mainContent" frameborder="0" scrolling="auto" width="100%" height="100%"></iframe>
+                <el-footer height="51px">
+                    <p>&copy; copyright2018 华联超市管理系统</p>
+                </el-footer>
+            </el-container>
+        </el-container>
+    </div>
+    <!-- 引入jquery.min.js -->
+    <script src="./js/jquery.min.js"></script>
+    <!-- 引入vue.min.js -->
+    <script src="./js/vue.min.js"></script>
+    <!-- 引入elementUI.js -->
+    <script src="./js/elementUI.js"></script>
+    <script>
+        /* 创建vue实例 */
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    tableData: [{
+                        date: '海飞丝去屑洗发水',
+                        name: '8'
+                    }, {
+                        date: '茅台酒',
+                        name: '6'
+                    }, {
+                        date: '龙凤呈祥',
+                        name: '5'
+                    }, {
+                        date: '龙凤呈祥2',
+                        name: '2'
+                    }],
+                    tableData1: [{
+                        date: '我的优乐美',
+                        name: '0',
+                        operation: '入库'
+                    }]
+
+                }
+
+            }
+        });
+    </script>
+</body>
+
+</html>

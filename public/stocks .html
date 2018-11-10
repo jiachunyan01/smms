@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>进货管理</title>
+    <!-- 引入reset.css -->
+    <link rel="stylesheet" href="style/reset.css">
+    <!-- 引入elementUI.css -->
+    <link rel="stylesheet" href="style/elementUI.css">
+    <!-- 引入index.css -->
+    <link rel="stylesheet" href="style/index.css">
+</head>
+
+<body>
+    <div id="app">
+        <el-main>
+            <el-card class="box-card">
+                <div slot="header" class="clearfix">
+                    <span>商品入库</span>
+                </div>
+                <div class="text item">
+                    <el-row>
+                            <el-col :span="10">
+                            <el-form :label-position="labelPosition" :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2"
+                                label-width="100px" class="demo-ruleForm">
+                                <el-form-item label="商品条形码:" prop="barCode">
+                                    <el-input type="text" v-model="ruleForm2.barCode" autocomplete="off"></el-input>
+                                </el-form-item>
+                    
+                                <el-form-item label="数量:" prop="goodsNum">
+                                    <el-input type="text" v-model="ruleForm2.goodsNum" autocomplete="off"></el-input>
+                                    <p>记重商品单位为千克</p>
+                                </el-form-item>
+        
+                                <el-form-item label="进价:" prop="pcsPrice">
+                                        <el-input type="text" v-model="ruleForm2.pcsPrice " autocomplete="off"></el-input>
+                                    </el-form-item>
+                                <el-form-item>
+                                    <el-button type="success" plain @click="submitForm('ruleForm2.goodsDesc')">入库</el-button>
+                                    <el-button  type="danger" plain @click="resetForm('ruleForm2')">重置</el-button>
+                                </el-form-item>
+                            </el-form>
+                            </el-col>
+                     
+
+
+                    </el-row>
+                </div>
+            </el-card>
+
+        </el-main>
+    </div>
+    <!-- 引入jquery.min.js -->
+    <script src="./js/jquery.min.js"></script>
+    <!-- 引入vue.min.js -->
+    <script src="./js/vue.min.js"></script>
+    <!-- 引入elementUI.js -->
+    <script src="./js/elementUI.js"></script>
+    <script>
+        /* 创建vue实例 */
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    labelPosition: 'top',
+                 
+                    ruleForm2: {
+                        goodsName: '',
+                        barCode: '',
+                        ComPrice: '',
+                        marketPrice: '',
+                        pcsPrice:'',
+                        goodsNum:'',
+                        goodsWeight:'',
+                        unit:'',
+                        goodsDesc:''
+
+
+
+
+                    },
+                    rules2: {
+
+                        goodsNum: [
+                            { required: true, message: '请输入商品数量', trigger: 'blur' },
+                           
+                        ],
+                        barCode: [
+                            { required: true, message: '请输入商品条形码', trigger: 'blur' },
+                           
+                        ],
+                        pcsPrice: [
+                            { required: true, message: '请再次商品售价', trigger: 'blur' },
+                           
+                        ]
+                      
+                    }
+                };
+            },
+            methods: {
+                submitForm(formName) {
+                    this.$refs[formName].validate((valid) => {
+                        if (valid) {
+                            alert('submit!');
+                            console.log(this.ruleForm2)
+                            $.post("/users/add", this.ruleForm2, function (result) {
+                                console.log(result)
+                            })
+
+                        } else {
+                            console.log('error submit!!');
+                            return false;
+                        }
+                    });
+                },
+                resetForm(formName) {
+                    this.$refs[formName].resetFields();
+                }
+            }
+
+
+
+        });
+    </script>
+</body>
+
+</html>

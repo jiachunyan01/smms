@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>账号管理</title>
+    <!-- 引入reset.css -->
+    <link rel="stylesheet" href="style/reset.css">
+    <!-- 引入elementUI.css -->
+    <link rel="stylesheet" href="style/elementUI.css">
+    <!-- 引入index.css -->
+    <link rel="stylesheet" href="style/index.css">
+</head>
+
+<body>
+    <div id="app">
+
+        <el-main>
+            <el-card class="box-card">
+                <div slot="header" class="clearfix">
+                    <span>商品管理</span>
+                </div>
+                <div class="text item">
+
+                    <div style="text-align: left">
+                        <el-form :inline="true" :model="ruleForm2" class="demo-form-inline">
+                            <el-form-item label="所属分类">
+                                <el-select v-model="ruleForm2.searchCateName" placeholder="请选择分类">
+                                    <el-option label="全部" value="全部"></el-option>
+
+                                </el-select>
+                            </el-form-item>
+                            <el-form-item label="关键字:">
+                                <el-input v-model="ruleForm2.searchKey" placeholder="商品名或条形码"></el-input>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-button type="success" @click="">查询</el-button>
+                            </el-form-item>
+                            <template>
+                                <el-table :data="tableData" stripe style="width: 100%">
+                                    <el-table-column label="条形码" width="120">
+                                        <template slot-scope="scope">{{ scope.row.barCode }}</template>
+                                    </el-table-column>
+
+                                    <el-table-column label="商品名称" width="120">
+                                        <template slot-scope="scope">{{ scope.row.goodsName }}</template>
+                                    </el-table-column>
+
+                                    <el-table-column label="所属分类" width="120">
+                                        <template slot-scope="scope">{{ scope.row.usergroup }}</template>
+                                    </el-table-column>
+
+                                    <el-table-column label="成本价格(元)" width="120">
+                                        <template slot-scope="scope">{{ scope.row.pcsPrice }}</template>
+                                    </el-table-column>
+                                    <el-table-column label="是否促销" width="120">
+                                        <template slot-scope="scope">{{ scope.row.promotion }}</template>
+                                    </el-table-column>
+                                    <el-table-column label="会员优惠" width="120">
+                                        <template slot-scope="scope">{{ scope.row.discount }}</template>
+                                    </el-table-column>
+                                    <el-table-column label="操作">
+                                        <template slot-scope="scope">
+                                            <el-button size="mini" type="success" plain @click="handleEdit(scope.row.id)">编辑</el-button>
+                                            <el-button size="mini" type="danger" plain @click="handleDelete(scope.row.id)">删除</el-button>
+
+                                        </template>
+                                    </el-table-column>
+                                </el-table>
+                                <div class="block">
+                                   
+                                    <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+                                        :current-page="currentPage4" :page-sizes="[100, 200, 300, 400]" :page-size="100"
+                                        layout="total, sizes, prev, pager, next, jumper" :total="400">
+                                    </el-pagination>
+                                </div>
+                            </template>
+                        </el-form>
+                    </div>
+
+                </div>
+            </el-card>
+
+        </el-main>
+
+    </div>
+    <!-- 引入jquery.min.js -->
+    <script src="./js/jquery.min.js"></script>
+    <!-- 引入vue.min.js -->
+    <script src="./js/vue.min.js"></script>
+    <!-- 引入elementUI.js -->
+    <script src="./js/elementUI.js"></script>
+    <script>
+        /* 创建vue实例 */
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    currentPage1: 5,
+                    currentPage2: 5,
+                    currentPage3: 5,
+                    currentPage4: 4,
+                    ruleForm2: {
+                        goodsName: '',
+                        barCode: '',
+                        ComPrice: '',
+                        marketPrice: '',
+                        pcsPrice: '',
+                        goodsNum: '',
+                        goodsWeight: '',
+                        unit: '',
+                        goodsDesc: '',
+                        usergroup: '',
+                        promotion: '',
+                        discount: ''
+                    },
+                    tableData: [{
+                        goodsName: '张三',
+                        barCode: '超级管理员',
+                        ComPrice: '上海市普陀区金沙江路 1518 弄',
+                        marketPrice: 'sgg',
+                        pcsPrice: 'fff',
+                        goodsNum: 'fff',
+                        goodsWeight: 'fff',
+                        unit: 'fff',
+                        goodsDesc: 'fff',
+                        usergroup: '111',
+                        promotion: 'hfwjfk',
+                        discount: 'hjk'
+                    }]
+                }
+            },
+
+methods: {
+                handleSizeChange(val) {
+                    console.log(`每页 ${val} 条`);
+                },
+                handleCurrentChange(val) {
+                    console.log(`当前页: ${val}`);
+                }
+            },
+        
+              
+    
+        });
+    </script>
+</body>
+
+</html>

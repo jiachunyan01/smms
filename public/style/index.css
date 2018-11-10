@@ -1,0 +1,165 @@
+.el-header, .el-footer {
+    color: #333;
+    line-height: 30px;
+  }
+
+  .el-header h2{
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 25px;
+  }
+  .el-header p{
+      padding-top: 10px;
+  }
+  .el-aside {
+    background: url(../img/left1.png) repeat-y;
+  }
+  
+  .el-main {
+    color: #333;
+  }
+
+  html,body,#app, .el-container{
+    height: 100%;
+}
+
+  .el-main .el-card__header{
+    background: url(../img/cardTitleBg.png) repeat-x;
+    font-size: 18px;  
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+    padding: 0px 20px;
+  }
+
+  .el-main .el-card__body{
+    background-color: #fff;
+  }
+
+  #messgae{
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  
+  body > .el-container {
+    background-color: #F8F8F8;
+  }
+
+  .el-footer{
+    margin-top: 20px;
+  }
+  .el-footer p{
+    font-size: 12px;
+    border-top: 1px solid #ccc;
+    line-height: 50px;
+  }
+  .el-alert__icon{
+    font-size: 16px;
+    color: #3560d8;
+}
+.el-alert__title{
+    color:#585b66
+}
+#messgae{
+    margin-top:15px;
+    margin-bottom: 15px;
+}
+#messgae .el-alert__title{
+  
+    color:#57a000;
+}
+.el-table--enable-row-transition .el-table__body td {
+    background-color: #FAFAFA;
+}
+.el-table--striped .el-table__body tr.el-table__row--striped td{
+   background-color: #fff
+}
+.el-table_1_column_2{
+    background: red
+}
+.el-col el-col-12{
+    padding-right: 10px;
+}
+.el-alert--warning{
+    background-color: #dbe3ff
+}
+.el-menu{
+    background: transparent;
+    border-right: none
+}
+.el-submenu__title{
+    background:url(../img/left2.png)repeat-x;
+    height: 33px;
+    line-height: 33px;
+    text-align: right;
+    border-radius: 3px 0px 0px 3px;
+    width: 210px;
+    padding: 0 20px;
+    margin-left: 20px;
+    color: #fff
+
+}
+.el-submenu__icon-arrow{
+    display: none;
+
+}
+.el-submenu .el-menu-item{
+    color: #fff;
+    height: 33px;
+    line-height: 33px;
+    text-align: right;
+    border-radius: 3px 0px 0px 3px;
+    width: 210px;
+    padding: 0 20px;
+    margin-left: 20px;
+}
+.el-menu-item.is-active a{
+    font-weight: bold;
+    color: green
+
+}
+.el-menu-item:hover{
+    background: rgba(255, 255, 255, 0.2);
+}
+.el-submenu{
+    margin-bottom: 10px;
+}
+#box{
+    line-height: 30px;
+    color:#fff;
+    text-align: right;
+    padding: 30px 15px;
+    font-size: 15px;
+}
+#box h1{
+    font-size: 24px;
+    margin-bottom: 40px;
+
+}
+.el-aside a{
+    text-decoration: none;
+    color:#fff;
+   
+}
+
+
+ .el-select {
+    width: 100%;
+  }
+  .el-table--enable-row-transition .el-table__body td{
+      text-align: center
+  }
+  .el-table td, .el-table th.is-leaf{
+      text-align: center
+  }
+  /* .el-input{
+    width:70%;
+} */
+.el-form-item__label{
+font-weight: bold
+}
+
+
+.block{
+    margin-top: 20px;
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>添加账号</title>
+    <!-- 引入reset.css -->
+    <link rel="stylesheet" href="style/reset.css">
+    <!-- 引入elementUI.css -->
+    <link rel="stylesheet" href="style/elementUI.css">
+    <!-- 引入index.css -->
+    <link rel="stylesheet" href="style/index.css">
+</head>
+
+<body>
+    <div id="app">
+            <el-main>
+                    <el-card class="box-card">
+                        <div slot="header" class="clearfix">
+                            <span>添加管理员账号</span>
+                        </div>
+                        <div class="text item">
+                            <el-row>
+                                <el-col :span="10">
+
+                                    <el-form :label-position="labelPosition" :model="ruleForm2" status-icon :rules="rules2"
+                                        ref="ruleForm2" label-width="100px" class="demo-ruleForm">
+                                        <el-form-item label="用户名:" prop="username">
+                                            <el-input v-model="ruleForm2.username"></el-input>
+                                        </el-form-item>
+                                        <el-form-item label="密&emsp;码:" prop="pass">
+                                            <el-input type="password" v-model="ruleForm2.pass" autocomplete="off"></el-input>
+                                        </el-form-item>
+                                        <el-form-item label="确认密码:" prop="checkPass">
+                                            <el-input type="password" v-model="ruleForm2.checkPass" autocomplete="off"></el-input>
+                                        </el-form-item>
+
+                                        <el-form-item label="用户组:" prop="usergroup">
+                                            <el-select v-model="ruleForm2.usergroup" placeholder="请选择用户组">
+                                                <el-option label="超级管理员" value="超级管理员"></el-option>
+                                                <el-option label="管理员" value="管理员"></el-option>
+                                                <el-option label="普通用户" value="普通用户"></el-option>
+                                            </el-select>
+                                        </el-form-item>
+                                        <el-form-item>
+                                            <el-button type="success"plain @click="submitForm('ruleForm2')">注册</el-button>
+                                            <el-button type="danger" plain @click="resetForm('ruleForm2')">重置</el-button>
+                                        </el-form-item>
+                                    </el-form>
+
+                                </el-col>
+
+
+                            </el-row>
+                        </div>
+                    </el-card>
+
+                </el-main>
+    </div>
+    <!-- 引入jquery.min.js -->
+    <script src="./js/jquery.min.js"></script>
+    <!-- 引入vue.min.js -->
+    <script src="./js/vue.min.js"></script>
+    <!-- 引入elementUI.js -->
+    <script src="./js/elementUI.js"></script>
+    <script>
+        /* 创建vue实例 */
+        new Vue({
+            el: "#app",
+            data() {
+
+                var validatePass2 = (rule, value, callback) => {
+                    if (value !== this.ruleForm2.pass) {
+                        callback(new Error('两次输入密码不一致!'));
+                    } else {
+                        callback();
+                    }
+                };
+                return {
+                    labelPosition: 'top',
+                    ruleForm2: {
+                        pass: '',
+                        checkPass: '',
+                        username: '',
+                        usergroup: ''
+                    },
+                    rules2: {
+
+                        username: [
+                            { required: true, message: '请输入用户名', trigger: 'blur' },
+                            { min: 5, max: 18, message: '长度在 5 到 18 个字符', trigger: 'blur' }
+                        ],
+                        pass: [
+                            { required: true, message: '请输入密码', trigger: 'blur' },
+                            { min: 5, max: 18, message: '长度在 5 到 18 个字符', trigger: 'blur' }
+                        ],
+                        checkPass: [
+                            { required: true, message: '请再次输入密码', trigger: 'blur' },
+                            { min: 5, max: 18, message: '长度在 5 到 18 个字符', trigger: 'blur' },
+                            { validator: validatePass2, trigger: 'blur' }
+                        ],
+                        usergroup: [
+                            { required: true, message: '请选择用户组', trigger: 'change' }
+                        ]
+                    }
+                };
+            },
+            methods: {
+                submitForm(formName) {
+                    this.$refs[formName].validate((valid) => {
+                        if (valid) {
+                            alert('submit!');
+                            console.log(this.ruleForm2)
+                            $.post("/users/add",this.ruleForm2,function(result){
+                           console.log(result)
+                            })
+                            
+                        } else {
+                            console.log('error submit!!');
+                            return false;
+                        }
+                    });
+                },
+                resetForm(formName) {
+                    this.$refs[formName].resetFields();
+                }
+            }
+
+
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商品退货</title>
+    <!-- 引入reset.css -->
+    <link rel="stylesheet" href="style/reset.css">
+    <!-- 引入elementUI.css -->
+    <link rel="stylesheet" href="style/elementUI.css">
+    <!-- 引入index.css -->
+    <link rel="stylesheet" href="style/index.css">
+</head>
+
+<body>
+    <div id="app">
+        <el-main>
+
+            <el-card class="box-card">
+                <div slot="header" class="clearfix">
+                    <span>商品退货</span>
+                </div>
+                <div class="text item">
+                    <el-row>
+                        <el-col :span="10">
+                            <el-form :model="ruleForm" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+                                <el-form-item label="订单号：" prop="oderNumber">
+                                    <el-input v-model="ruleForm.oderNumber"></el-input><br>
+                                   
+                                </el-form-item>
+                                <el-form-item>
+                                        <el-button type="success"plain @click="submitForm('ruleForm')">查询</el-button>
+                            </el-form>
+                </div>
+            </el-card>
+            </el-col>
+            </el-row>
+        </el-main>
+    </div>
+    <!-- 引入jquery.min.js -->
+    <script src="./js/jquery.min.js"></script>
+    <!-- 引入vue.min.js -->
+    <script src="./js/vue.min.js"></script>
+    <!-- 引入elementUI.js -->
+    <script src="./js/elementUI.js"></script>
+    <script>
+        /* 创建vue实例 */
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    ruleForm: {
+                        oderNumber: '',
+
+                    },
+
+                }
+            }
+
+        });
+    </script>
+</body>
+
+</html>
