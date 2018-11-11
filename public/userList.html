@@ -26,23 +26,20 @@
 
                     <template>
                         <el-table :data="tableData" style="width: 100%">
-                            <el-table-column label="用户名称" width="">
-                                <template slot-scope="scope">
+                            <el-table-column label="编号" prop="u_id">
 
-                                    <span>{{ scope.row.username }}</span>
-                                </template>
                             </el-table-column>
-                            <el-table-column label="用户组" width="">
-                                <template slot-scope="scope">
+                            <el-table-column label="账号" prop="userName">
+                            </el-table-column>
+                            <el-table-column label="用户组" prop="userGroup">
 
-                                    <span>{{ scope.row.usergroup }}</span>
-                                </template>
+                            </el-table-column>
+                            <el-table-column label="日期" prop="createDatetime" :formatter="mydateFormat">
                             </el-table-column>
                             <el-table-column label="操作">
                                 <template slot-scope="scope">
-                                    <el-button size="mini" @click="handleEdit(scope.$index, scope.row)" type="success"
-                                        plain>编辑</el-button>
-                                    <el-button size="mini" type="danger" plain @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                                    <el-button size="mini" @click="handleEdit(scope.row.u_id)" type="success" plain>编辑</el-button>
+                                    <el-button size="mini" type="danger" plain @click="handleDelete(scope.row.u_id)">删除</el-button>
                                 </template>
                             </el-table-column>
                         </el-table>
@@ -60,32 +57,61 @@
     <script src="./js/vue.min.js"></script>
     <!-- 引入elementUI.js -->
     <script src="./js/elementUI.js"></script>
+    <!-- 引入moment.js -->
+    <script src="./js/moment.min.js"></script>
     <script>
         /* 创建vue实例 */
         new Vue({
             el: "#app",
             data() {
                 return {
-                    tableData: [{
-                        username: '张三',
-                        usergroup: '超级管理员',
-                        address: '上海市普陀区金沙江路 1518 弄'
-                    }, {
-                        username: '张三',
-                        usergroup: '超级管理员',
-                        address: '上海市普陀区金沙江路 1518 弄'
-                    }, {
-                        username: '张三',
-                        usergroup: '超级管理员',
-                        address: '上海市普陀区金沙江路 1518 弄'
-                    }, {
-                        username: '张三',
-                        usergroup: '超级管理员',
-                        address: '上海市普陀区金沙江路 1518 弄'
-                    }]
+                    tableData: []
                 }
 
+            },
+            methods: {
+                /* 获取id */
+                handleEdit(id) {
+                    //console.log(id)
+                    location.href="userEdit.html?id="+id;
+                    //发起ajax请求后端获取要修改的数据
+                   
+                },
+                handleDelete(id) {
+                    //console.log(id)
+                    //发起ajax请求后端获取要删除的数据
+                    $.get("/users/del", { id }, (data) => {
+                        //console.log(data)
+                        if (data.isOk) {
+                            alert(data.msg)
+                            this.getAjaxData()
+                        } else {
+                            alert(data.msg)
+                        }
+                    })
+                },
+                /* 抽取公共的方法 */
+                getAjaxData() {
+                
+                    $.get("/users/list",  (data)=>{
+                        // console.log(data)
+                        this.tableData = data
+                    })
+                },
+                mydateFormat: function (row, column) {
+                    var date = row[column.property];
+                    if (date == undefined) {
+                        return "";
+                    }
+                    return moment(date).format("YYYY-MM-DD");
+                    //return moment(date).format("YYYY年MM月DD日");
+                }
+            }, mounted() {
+
+                //发ajax请求后端数据
+                this.getAjaxData()
             }
+
 
 
         });
