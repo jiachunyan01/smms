@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="style/elementUI.css">
     <!-- 引入index.css -->
     <link rel="stylesheet" href="style/index.css">
+      <!--验证用户合法  -->
+      <script src="users/cookieOut"></script>
 </head>
 
 <body>
@@ -80,6 +82,10 @@
                 handleDelete(id) {
                     //console.log(id)
                     //发起ajax请求后端获取要删除的数据
+                    /* 判断用户是否删除 */
+                    if (confirm("请问您确认删除吗？")){
+
+                    
                     $.get("/users/del", { id }, (data) => {
                         //console.log(data)
                         if (data.isOk) {
@@ -89,7 +95,8 @@
                             alert(data.msg)
                         }
                     })
-                },
+                }
+            },
                 /* 抽取公共的方法 */
                 getAjaxData() {
                 

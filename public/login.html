@@ -64,10 +64,20 @@
                 submitForm(formName) {
                     this.$refs[formName].validate((valid) => {
                         if (valid) {
-                            alert('登录成功');
-                            console.log(this.ruleForm2.username, this.ruleForm2.checkPass)
+                           // alert('您的账号已登录成功~~~');
+                            //console.log(this.ruleForm2.username, this.ruleForm2.checkPass)
+                        $.post("/users/checkLogin",this.ruleForm2,function(data){
+                            //console.log(data)
+                            if(data.isOk){
+                                alert(data.msg)
+                                location.href="index.html"
+                            }else{
+                                alert(data.msg)
+                            }
+                        })
+
                         } else {
-                            console.log('error submit!!');
+                            console.log('很遗憾，您的账号登录失败');
                             return false;
                         }
                     });

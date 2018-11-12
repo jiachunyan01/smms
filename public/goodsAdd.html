@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>添加账号</title>
+    <title>添加分类</title>
     <!-- 引入reset.css -->
     <link rel="stylesheet" href="style/reset.css">
     <!-- 引入elementUI.css -->
@@ -28,51 +28,51 @@
                                 label-width="100px" class="demo-ruleForm">
 
 
-                                <el-form-item label="所属分类:" prop="usergroup">
-                                    <el-select v-model="ruleForm2.usergroup" placeholder="请选择分类">
+                                <el-form-item label="所属分类:" prop=" cg_id">
+                                    <el-select v-model="ruleForm2. cg_id" placeholder="请选择分类">
                                         <el-option label="顶级分类" value="顶级分类"></el-option>
                                         <el-option label="普通分类" value="普通分类"></el-option>
                                     </el-select>
 
 
                                 </el-form-item>
-                                <el-form-item label="商品条形码:" prop="barCode">
-                                    <el-input type="text" v-model="ruleForm2.barCode" autocomplete="off"></el-input>
+                                <el-form-item label="商品条形码:" prop="barcode">
+                                    <el-input type="text" v-model="ruleForm2.barcode" autocomplete="off"></el-input>
                                 </el-form-item>
-                                <el-form-item label="商品名称:" prop="goodsName">
-                                    <el-input type="text" v-model="ruleForm2.goodsName" autocomplete="off"></el-input>
+                                <el-form-item label="商品名称:" prop="goodsname">
+                                    <el-input type="text" v-model="ruleForm2.goodsname" autocomplete="off"></el-input>
                                 </el-form-item>
-                                <el-form-item label="商品售价:" prop="ComPrice">
-                                    <el-input type="text" v-model="ruleForm2.ComPrice" autocomplete="off"></el-input>
+                                <el-form-item label="商品售价:" prop="goodsprice">
+                                    <el-input type="text" v-model="ruleForm2.goodsprice" autocomplete="off"></el-input>
                                 </el-form-item>
-                                <el-form-item label="市场价:" prop="marketPrice" >
-                                    <el-input type="text" v-model="ruleForm2.marketPrice" autocomplete="off"></el-input>
+                                <el-form-item label="市场价:" prop="marketprice" >
+                                    <el-input type="text" v-model="ruleForm2.marketprice" autocomplete="off"></el-input>
                                     <p>默认市场价为售价的1.2倍</p>
                                 </el-form-item>
-                                <el-form-item label="商品进价:" prop="pcsPrice">
-                                    <el-input type="text" v-model="ruleForm2.pcsPrice " autocomplete="off"></el-input>
+                                <el-form-item label="商品进价:" prop="saleprice">
+                                    <el-input type="text" v-model="ruleForm2.saleprice " autocomplete="off"></el-input>
                                 </el-form-item>
-                                <el-form-item label="入库数量:" prop="goodsNum">
-                                    <el-input type="text" v-model="ruleForm2.goodsNum" autocomplete="off"></el-input>
+                                <el-form-item label="入库数量:" prop="stockNum">
+                                    <el-input type="text" v-model="ruleForm2.stockNum" autocomplete="off"></el-input>
                                 </el-form-item>
-                                <el-form-item label="商品重量:" prop="goodsWeight">
-                                    <el-input type="text" v-model="ruleForm2.goodsWeight" autocomplete="off"></el-input>
+                                <el-form-item label="商品重量:" prop="weigth">
+                                    <el-input type="text" v-model="ruleForm2.weigth" autocomplete="off"></el-input>
                                     <p>记重商品单位为千克</p>
                                 </el-form-item>
                                 <el-form-item label="商品单位:" prop="unit">
                                     <el-input type="text" v-model="ruleForm2.unit" autocomplete="off"></el-input>
                                 </el-form-item>
-                                <el-form-item label="会员优惠：" prop="">
+                                <el-form-item label="会员优惠：" prop="promotion">
                                     <el-radio v-model="radio" label="1">享受</el-radio>
                                     <el-radio v-model="radio" label="2">不享受</el-radio>
                                 </el-form-item>
-                                <el-form-item label="是否促销：" prop="">
+                                <el-form-item label="是否促销：" prop="discount">
                                     <el-radio v-model="radio1" label="1">启动</el-radio>
                                     <el-radio v-model="radio1" label="2">禁用</el-radio>
                                 </el-form-item>
 
-                                <el-form-item label="商品简介">
-                                    <el-input type="textarea" v-model="ruleForm2.goodsDesc"></el-input>
+                                <el-form-item label="商品简介"  prop="goodsDetails">
+                                    <el-input type="textarea" v-model="ruleForm2.goodsDetails"></el-input>
                                     <p>不超过200个汉字</p>
                                 </el-form-item>
                                 <el-form-item>
@@ -106,15 +106,15 @@
                      radio: '1',
                      radio1: '2',
                     ruleForm2: {
-                        goodsName: '',
-                        barCode: '',
-                        ComPrice: '',
-                        marketPrice: '',
-                        pcsPrice:'',
-                        goodsNum:'',
-                        goodsWeight:'',
+                        cg_id: '',
+                        barcode: '',
+                        goodsname: '',
+                        marketprice: '',
+                        saleprice:'',
+                        stockNum:'',
+                        weigth:'',
                         unit:'',
-                        goodsDesc:''
+                        goodsDetails:''
 
 
 
